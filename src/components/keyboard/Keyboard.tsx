@@ -6,7 +6,7 @@ import "react-simple-keyboard/build/css/index.css";
 import "./keyboard.css";
 
 function CustomKeyboard({ isBlocked }: { isBlocked: boolean }) {
-  const [show, target, type, blocked, setNewTarget, setShow, setBlocked] =
+  const [show, target, _type, blocked, setNewTarget, setShow, setBlocked] =
     useKeyboardStore((state) => [
       state.show,
       state.target,
@@ -16,9 +16,9 @@ function CustomKeyboard({ isBlocked }: { isBlocked: boolean }) {
       state.setShow,
       state.setBlocked,
     ]);
-  const [layout, setLayout] = useState(layout1);
+  const [layout, _setLayout] = useState(layout1);
   const [layoutName, setLayoutName] = useState("default");
-  const [theme, setTheme] = useState("default");
+  // const [theme, setTheme] = useState("default");
   const keyboard = useRef<HTMLInputElement | null>(null);
   // const input = useRef<HTMLElement | null>(null);
 
