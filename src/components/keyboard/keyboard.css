@@ -1,48 +1,98 @@
+@import "@fontsource/roboto/300.css";
+
 .case {
   position: absolute;
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
   width: fit-content;
-  z-index: 99999; 
+  z-index: 99999;
+}
+
+.relativeCase {
+  position: relative;
+  width: fit-content;
+  z-index: 99999;
 }
 
 .keyboard {
-  background: black;  /* TO DO theme */
-  border-radius: 12px;
-  padding: 10px;
+  border-radius: 10px;
+  border: solid 5px black;
+}
+
+.hg-theme-default {
+  border-radius: 0;
 }
 
 .simple-keyboard {
-  background: black;
-  --button-size: 60px;
+  background: #1c1f27;
 }
 
-.simple-keyboard .hg-button {
-  background: brown;
-  border: 0;
-  color: ghostwhite;
-  margin: 5px;
+.hg-button.background-shadow-black {
+  background-color: #1c1f27 !important;
+  border: 0 !important;
+}
+
+.hg-button.color-red {
+  color: red;
+}
+
+.hg-button.small {
+  font-size: 12px !important;
+}
+
+.hg-button.border-vine-green {
+  --button-size: 34px;
+  min-height: var(--button-size);
+  max-height: var(--button-size);
   min-width: var(--button-size);
-  min-height: var(--button-size);
   max-width: var(--button-size);
-  max-height: var(--button-size);
+  border: solid 3px #00b187;
+  border-radius: 14px;
+  background-color: rgba(0, 0, 0, 0);
 }
 
-.hg-button.blue-key {
-  background: blue
+.hg-button.rounded-button {
+  --button-width: 34px;
+  --button-height: 43px;
+  --padding: 5px;
+  border: solid 1px black;
+  background: rgba(57, 57, 66);
+  color: ghostwhite;
+  min-height: var(--button-height);
+  max-height: var(--button-height);
+  min-width: var(--button-width);
+  max-width: var(--button-width);
+  font-family: "Roboto", sans-serif;
+  font-size: 20px;
+  font-weight: 300;
 }
 
-.hg-button.space-key {
-  min-width: calc(6 * var(--button-size) + 5 * 10px);
-  min-height: var(--button-size);
-  max-width: calc(6 * var(--button-size) + 5 * 10px);
-  max-height: var(--button-size);
+.hg-button.empty-half {
+  background-color: rgba(0, 0, 0, 0);
+  border: 0 !important;
+  min-width: calc(var(--button-width) / 2);
+  min-height: var(--button-height);
+  max-width: calc(var(--button-width) / 2);
+  max-height: var(--button-height);
 }
 
-.hg-button.function-key {
-  min-width: calc(2 * var(--button-size) + 10px);
-  min-height: var(--button-size);
-  max-width: calc(2 * var(--button-size) + 10px);
-  max-height: var(--button-size);
+.hg-button.unit-1-5 {
+  min-width: calc(1.5 * var(--button-width) + 2.5px);
+  max-width: calc(1.5 * var(--button-width) + 2.5px);
+}
+
+.hg-button.unit-3 {
+  min-width: calc(3 * var(--button-width) + 10px);
+  max-width: calc(3 * var(--button-width) + 10px);
+}
+
+.hg-button.unit-5 {
+  min-width: calc(5 * var(--button-width) + 20px);
+  max-width: calc(5 * var(--button-width) + 20px);
+}
+
+.hg-button.unit-6 {
+  min-width: calc((6 * var(--button-width)) + 25px);
+  max-width: calc((6 * var(--button-width)) + 25px);
 }
