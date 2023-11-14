@@ -20,3 +20,5 @@ jobs:
           node-version: 18
       - name: Install
         run: npm install --progress=false
+      - name: Test
+        run: npm run tsc
