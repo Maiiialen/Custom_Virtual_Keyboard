@@ -39,7 +39,7 @@ function CustomKeyboard() {
         type: (event.target as HTMLInputElement).type,
       });
     setPreviousValue((event.target as HTMLInputElement).value);
-    setLayoutName("default")
+    setLayoutName("default");
   };
 
   const handleCloseKeyboard = () => {
@@ -57,7 +57,8 @@ function CustomKeyboard() {
   }, []);
 
   const onChange = (actualInput: string) => {
-    const input = previousValue + actualInput;
+    const input = previousValue + actualInput.slice(-1);
+    setPreviousValue(input)
 
     const setter = Object.getOwnPropertyDescriptor(
       window.HTMLInputElement.prototype,
@@ -85,11 +86,23 @@ function CustomKeyboard() {
       setLayoutName(layoutName === "special1" ? "special2" : "special1");
   };
 
+  const handleBackspace = () => {
+    const input = previousValue.slice(0, -1);
+    setPreviousValue(input)
+
+    const setter = Object.getOwnPropertyDescriptor(
+      window.HTMLInputElement.prototype,
+      "value"
+    )?.set;
+    setter?.call(target, input);
+  };
+
   const onKeyPress = (button: string, e: MouseEvent | undefined) => {
     e?.preventDefault();
     if (button.includes("shift")) handleShift();
     if (button.includes("lay1")) handleLay1();
     if (button.includes("lay2")) handleLay2();
+    if (button.includes("backspace")) handleBackspace();
   };
 
   const onKeyReleased = (button: string) => {
@@ -102,22 +115,18 @@ function CustomKeyboard() {
   if (!show || blocked) return null;
 
   return (
-    <div className={"case"}>
-      <div onClick={(e) => e.preventDefault()} className="keyboard">
-        {/* <div ref={input} onClick={(e) => e.preventDefault()} className="keyboard"> */}
-        <Keyboard
-          style={{ "&.hg-button.colored-key": { backgroundColor: "red" } }}
-          keyboardRef={(r) => (keyboardElement.current = r)}
-          onChange={onChange}
-          onKeyPress={onKeyPress}
-          onKeyReleased={onKeyReleased}
-          layoutName={layoutName}
-          layout={keyboard.layout}
-          buttonTheme={keyboard.buttonTheme}
-          mergeDisplay={true}
-          display={keyboard.display}
-        />
-      </div>
+    <div className="keyboard">
+      <Keyboard
+        keyboardRef={(r) => (keyboardElement.current = r)}
+        onChange={onChange}
+        onKeyPress={onKeyPress}
+        onKeyReleased={onKeyReleased}
+        layoutName={layoutName}
+        layout={keyboard.layout}
+        buttonTheme={keyboard.buttonTheme}
+        mergeDisplay={true}
+        display={keyboard.display}
+      />
     </div>
   );
 }
