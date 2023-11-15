@@ -3,7 +3,7 @@ import { devtools } from "zustand/middleware";
 import { KeyboardType, KeyboardStore } from "./types";
 
 export const useKeyboardStore = create<KeyboardStore>()(
-  devtools((set) => ({
+  devtools((set, get) => ({
     show: false,
     target: null,
     type: "",

@@ -29,7 +29,7 @@ function App({
 
   if (customConfig) {
     // if(customConfig) // TO DO parse/safeparse with zod
-    useKeyboardStore.getState().addNewConfig(customConfig);
+    // useKeyboardStore.getState().addNewConfig(customConfig);
     // setKeyboardName(customConfig);
   }
 
