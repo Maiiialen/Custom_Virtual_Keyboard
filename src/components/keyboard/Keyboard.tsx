@@ -39,6 +39,7 @@ function CustomKeyboard() {
         type: (event.target as HTMLInputElement).type,
       });
     setPreviousValue((event.target as HTMLInputElement).value);
+    setLayoutName("default")
   };
 
   const handleCloseKeyboard = () => {
