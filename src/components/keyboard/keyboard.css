@@ -1,21 +1,12 @@
 @import "@fontsource/roboto/300.css";
 
-.case {
+.keyboard {
   position: absolute;
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
   width: fit-content;
   z-index: 99999;
-}
-
-.relativeCase {
-  position: relative;
-  width: fit-content;
-  z-index: 99999;
-}
-
-.keyboard {
   border-radius: 10px;
   border: solid 5px black;
 }
@@ -33,23 +24,29 @@
   border: 0 !important;
 }
 
-.hg-button.color-red {
-  color: red;
-}
-
 .hg-button.small {
   font-size: 12px !important;
 }
 
 .hg-button.border-vine-green {
-  --button-size: 34px;
-  min-height: var(--button-size);
-  max-height: var(--button-size);
-  min-width: var(--button-size);
-  max-width: var(--button-size);
+  --button-width: 40px;
+  min-height: var(--button-width);
+  max-height: var(--button-width);
+  min-width: var(--button-width);
+  max-width: var(--button-width);
   border: solid 3px #00b187;
   border-radius: 14px;
   background-color: rgba(0, 0, 0, 0);
+}
+
+.hg-button.border-vine-green:hover {
+  color: black;
+  background: #00b187;
+}
+
+.hg-button.border-vine-green:active {
+  color: black;
+  background: #01e4af;
 }
 
 .hg-button.rounded-button {
@@ -68,6 +65,16 @@
   font-weight: 300;
 }
 
+.hg-button.rounded-button:hover {
+  color: ghostwhite;
+  background: rgb(42, 42, 63);
+}
+
+.hg-button.rounded-button:active {
+  color: ghostwhite;
+  background: rgb(41, 49, 94);
+}
+
 .hg-button.empty-half {
   background-color: rgba(0, 0, 0, 0);
   border: 0 !important;
@@ -75,6 +82,7 @@
   min-height: var(--button-height);
   max-width: calc(var(--button-width) / 2);
   max-height: var(--button-height);
+  pointer-events: none;
 }
 
 .hg-button.unit-1-5 {
@@ -87,6 +95,11 @@
   max-width: calc(3 * var(--button-width) + 10px);
 }
 
+.hg-button.unit-4 {
+  min-width: calc(4 * var(--button-width) + 15px);
+  max-width: calc(4 * var(--button-width) + 15px);
+}
+
 .hg-button.unit-5 {
   min-width: calc(5 * var(--button-width) + 20px);
   max-width: calc(5 * var(--button-width) + 20px);
@@ -95,4 +108,9 @@
 .hg-button.unit-6 {
   min-width: calc((6 * var(--button-width)) + 25px);
   max-width: calc((6 * var(--button-width)) + 25px);
+}
+
+.hg-button.unit-8 {
+  min-width: calc((8 * var(--button-width)) + 35px);
+  max-width: calc((8 * var(--button-width)) + 35px);
 }
