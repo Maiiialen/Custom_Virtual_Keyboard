@@ -1,4 +1,6 @@
 @import "@fontsource/roboto/300.css";
+@import "@fontsource/roboto/700.css";
+@import '@fontsource/dm-serif-text';
 
 .keyboard {
   position: absolute;
@@ -34,9 +36,13 @@
   max-height: var(--button-width);
   min-width: var(--button-width);
   max-width: var(--button-width);
-  border: solid 3px #00b187;
+  border: solid 3px #00fbbb;
   border-radius: 14px;
   background-color: rgba(0, 0, 0, 0);
+  /* box-shadow: 1px 1px 1px #006a57, -1px -1px 1px #006a57; */
+  box-shadow: inset 0px 0px 2px 2px #006a57, 0px 0px 2px 2px #006a57;
+  color: #00fbbb;
+  font-weight: 700;
 }
 
 .hg-button.border-vine-green:hover {
@@ -66,13 +72,37 @@
 }
 
 .hg-button.rounded-button:hover {
-  color: ghostwhite;
   background: rgb(42, 42, 63);
 }
 
 .hg-button.rounded-button:active {
-  color: ghostwhite;
   background: rgb(41, 49, 94);
+}
+
+.hg-button.old-machine {
+  --button-width: 50px;
+  --padding: 5px;
+  border: solid 3px rgb(255, 206, 11);
+  border-radius: 25px;
+  box-shadow: inset 2px 2px 2px 2px rgb(177, 177, 139);
+  background: rgb(255, 255, 225);
+  color: black;
+  min-height: var(--button-width);
+  max-height: var(--button-width);
+  min-width: var(--button-width);
+  max-width: var(--button-width);
+  font-family: 'DM Serif Text', sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.hg-button.old-machine:hover {
+  background: rgb(226, 226, 159);
+}
+
+.hg-button.old-machine:active {
+  background: rgb(212, 212, 139);
+  box-shadow: inset 2px 2px 2px 2px rgb(160, 160, 116);
 }
 
 .hg-button.empty-half {

@@ -8,53 +8,14 @@ export const useKeyboardStore = create<KeyboardStore>()(
     target: null,
     type: "",
     blocked: true,
-    chosedKeyboard: "BorderVineGreen",
+    chosedKeyboard: "OldMachine",
     allKeyboards: {
-      one: {
-        layout: {
-          default: [
-            "1 2 3 4 5 6 7 8 9 0",
-            "q w e r t y u i o p",
-            "a s d f g h j k l ;",
-            "{shift} z x c v b n m , .",
-            "{lay1} {space} {lay2}",
-          ],
-        }, // make a function that on layout save/change saves also all keys to buttonTheme to all group
-        buttonTheme: [
-          {
-            class: "background-shadow-black",
-            buttons: "1 2 3 4 5 6 7 8 9 0 {lay1} {lay2} {shift}",
-          },
-          {
-            class: "unit-6",
-            buttons: "{space}",
-          },
-          {
-            class: "unit-2",
-            buttons: "{lay1} {lay2}",
-          },
-          {
-            class: "rounded-button",
-            buttons:
-              "1 2 3 4 5 6 7 8 9 0 q w e r t y u i o p a s d f g h j k l ; {shift} z x c v b n m , . {lay1} {space} {lay2}",
-          },
-        ],
-        display: {
-          "{shift}": "⇧",
-          "{lay1}": "&123",
-          "{lay2}": "˅",
-          "{empty-half}": " ",
-          "{backspace}": "⌫",
-          "{enter}": "⏎",
-          "{\\}": "\\",
-        },
-      },
-      BorderVineGreen: {
+      OldMachine: {
         layout: {
           default: [
             "q w e r t y u i o p",
             "a s d f g h j k l @",
-            "{shift} z x c v b n m @ {backspace}",
+            "{shift} z x c v b n m / {backspace}",
             "{lay1} . , {space} - _ {enter}",
           ],
           special1: [
@@ -72,7 +33,77 @@ export const useKeyboardStore = create<KeyboardStore>()(
           shift: [
             "Q W E R T Y U I O P",
             "A S D F G H J K L @",
-            "{shift} Z X C V B N M @ {backspace}",
+            "{shift} Z X C V B N M / {backspace}",
+            "{lay1} . , {space} - _ {enter}",
+          ],
+        },
+        buttonTheme: [
+          {
+            class: "old-machine",
+            buttons:
+              "q w e r t y u i o p a s d f g h j k l ; {shift} z x c v b n m , . {lay1} {lay1abc} {lay1abc-long} {space} {small-space} {long-space} {lay2} {enter} {backspace} {lay2-long} {lay1abc} {small-backspace} {small-enter} {small-backspace-long} {small-enter-long} {tab} 1 2 3 4 5 6 7 8 9 0 @ # & _ - ( ) = % ' * : / ! £ ? + $ € ¥ ¢ © ® ™ ~ ¿ [ ] { } < > ^ ¡ ` ; ÷ {\\} | ¦ ¬ × § ¶ ° Q W E R T Y U I O P A S D F G H J K L Z X C V B N M",
+          },
+          {
+            class: "old-machine",
+            buttons: `"`,
+          },
+          {
+            class: "unit-4",
+            buttons: "{space}",
+          },
+          {
+            class: "unit-6",
+            buttons: "{long-space}",
+          },
+          {
+            class: "unit-3",
+            buttons: "{small-space}",
+          },
+        ],
+        display: {
+          "{shift}": "⇧",
+          "{lay1}": "123",
+          "{lay1abc}": "abc",
+          "{lay2}": "{&=",
+          "{empty-half}": " ",
+          "{backspace}": "⌫",
+          "{enter}": "⏎",
+          "{\\}": "\\",
+          "{small-backspace}": "⌫",
+          "{small-backspace-long}": "⌫",
+          "{small-space}": " ",
+          "{long-space}": " ",
+          "{small-enter}": "⏎",
+          "{tab}": "⇥",
+          "{small-enter-long}": "⏎",
+          "{lay2-long}": "123",
+          "{lay1abc-long}": "abc",
+        },
+      },
+      BorderVineGreen: {
+        layout: {
+          default: [
+            "q w e r t y u i o p",
+            "a s d f g h j k l @",
+            "{shift} z x c v b n m / {backspace}",
+            "{lay1} . , {space} - _ {enter}",
+          ],
+          special1: [
+            "1 2 3 4 5 6 7 8 9 0",
+            "@ # £ & _ - ( ) = %",
+            `{lay2} " * ' : / ! ? + {small-backspace}`,
+            "{lay1abc} . {long-space} , {enter}",
+          ],
+          special2: [
+            "$ € ¥ ¢ © ® ™ ~ ¿ ×",
+            "{tab} [ ] { } < > ^ ¡ §",
+            "{lay2-long} ` ; ÷ {\\} | ¦ ¬ ¶ {small-backspace-long}",
+            "{lay1abc-long} . {long-space} ° {small-enter-long}",
+          ],
+          shift: [
+            "Q W E R T Y U I O P",
+            "A S D F G H J K L @",
+            "{shift} Z X C V B N M / {backspace}",
             "{lay1} . , {space} - _ {enter}",
           ],
         },

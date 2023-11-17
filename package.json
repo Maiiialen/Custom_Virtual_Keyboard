@@ -28,6 +28,7 @@
   "dependencies": {
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
+    "@fontsource/dm-serif-text": "^5.0.17",
     "@fontsource/roboto": "^5.0.8",
     "@mui/material": "^5.14.16",
     "path": "^0.12.7",

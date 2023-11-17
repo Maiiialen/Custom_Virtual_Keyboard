@@ -9,12 +9,12 @@ import {
   SelectChangeEvent,
 } from "@mui/material";
 import { useKeyboardStore } from "./store/store";
-import {buttonStyle} from "./AppStyle"
+import { buttonStyle } from "./AppStyle";
 
 function App({
   children,
   isBlocked,
-  predefinedName = "MicrosoftSwiftKeyboard",
+  predefinedName,
   customConfig,
 }: {
   children: ReactNode;
@@ -42,7 +42,7 @@ function App({
   }, [isBlocked]);
 
   useEffect(() => {
-    setKeyboardName(predefinedName);
+    if (predefinedName) setKeyboardName(predefinedName);
   }, [predefinedName]);
 
   const handleChangeKeyboardName = (event: SelectChangeEvent) => {

@@ -112,7 +112,7 @@ function CustomKeyboard() {
     }
   };
 
-  if (!show || blocked) return null;
+  // if (!show || blocked) return null;
 
   return (
     <div className="keyboard">
