@@ -11,7 +11,28 @@ export default defineConfig({
     lib: {
       name: "@maiiialen/custom-virtual-keyboard",
       fileName: "custom-virtual-keyboard",
-      entry: resolve("src/App.tsx")
-    }
-  }
+      entry: resolve("src/App.tsx"),
+    },
+    rollupOptions: {
+      external: [
+        "react",
+        "react-dom",
+        "@mui/material",
+        "@emotion/react",
+        "@emotion/styled",
+        "@fontsource/roboto",
+      ],
+      output: {
+        globals: {
+          react: "React",
+          "react-dom": "ReactDOM",
+          "@mui/material": "Material",
+          "@emotion/react": "EmotionReact",
+          "@emotion/styled": "EmotionStyled",
+          "@fontsource/roboto": "Roboto",
+        },
+        sourcemap: true,
+      },
+    },
+  },
 });
