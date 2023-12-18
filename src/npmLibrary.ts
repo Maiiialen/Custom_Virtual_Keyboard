@@ -1,3 +1,3 @@
-import CustomVirtualKeyboard from "./App"
+import Keyboard from "./components/keyboard/Keyboard";
 
-export { CustomVirtualKeyboard };
+export { Keyboard as FCustomVirtualKeyboard };
