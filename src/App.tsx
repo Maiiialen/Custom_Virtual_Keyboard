@@ -12,12 +12,12 @@ import { useKeyboardStore } from "./store/store";
 
 function App({
   children,
-  isBlocked,
+  isBlocked = false,
   predefinedName,
   customConfig,
 }: {
   children: ReactNode;
-  isBlocked: boolean;
+  isBlocked?: boolean;
   predefinedName?: string;
   customConfig?: JSON;
 }) {
