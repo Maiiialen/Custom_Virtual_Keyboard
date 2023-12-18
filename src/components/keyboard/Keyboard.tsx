@@ -56,9 +56,27 @@ function CustomKeyboard() {
     };
   }, []);
 
+  useEffect(() => {
+    const page = document.getElementById("page");
+    const keyboardOverlay = document.getElementById("keyboard");
+    if (target) {
+      const difference =
+        target.getBoundingClientRect()?.bottom -
+        (window.innerHeight - (keyboardOverlay?.offsetHeight ?? 0));
+      if (show && !blocked && page) {
+        page.style.transform = `translateY(-${difference + 20}px)`;
+      }
+    }
+    return () => {
+      if (page) {
+        page.style.transform = "";
+      }
+    };
+  }, [target, show, blocked]);
+
   const onChange = (actualInput: string) => {
     const input = previousValue + actualInput.slice(-1);
-    setPreviousValue(input)
+    setPreviousValue(input);
 
     const setter = Object.getOwnPropertyDescriptor(
       window.HTMLInputElement.prototype,
@@ -88,7 +106,7 @@ function CustomKeyboard() {
 
   const handleBackspace = () => {
     const input = previousValue.slice(0, -1);
-    setPreviousValue(input)
+    setPreviousValue(input);
 
     const setter = Object.getOwnPropertyDescriptor(
       window.HTMLInputElement.prototype,
@@ -112,10 +130,14 @@ function CustomKeyboard() {
     }
   };
 
-  // if (!show || blocked) return null;
+  if (!show || blocked) return null;
 
   return (
-    <div className="keyboard">
+    <div
+      id="keyboard"
+      className="keyboard"
+      onMouseDown={(e) => e.preventDefault()}
+    >
       <Keyboard
         keyboardRef={(r) => (keyboardElement.current = r)}
         onChange={onChange}

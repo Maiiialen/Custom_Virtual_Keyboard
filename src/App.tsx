@@ -3,7 +3,6 @@ import Keyboard from "./components/keyboard/Keyboard";
 import {
   Box,
   Button,
-  // InputLabel,
   MenuItem,
   Select,
   SelectChangeEvent,
@@ -57,6 +56,7 @@ function App({
   return (
     <Box>
       <Box
+        id="page"
         sx={{
           display: "flex",
           flexDirection: "column",
@@ -79,12 +79,8 @@ function App({
           }}
         >
           <Box>
-            {/* <InputLabel id="demo-simple-select-label" sx={{ color: "white" }}>
-              Keyboard
-            </InputLabel> */}
             <Select
               value={keyboardName}
-              // label="Keyboard"
               onChange={handleChangeKeyboardName}
               sx={{
                 backgroundColor: "#3b3b3b",
