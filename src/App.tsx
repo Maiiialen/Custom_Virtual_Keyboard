@@ -1,4 +1,4 @@
-import { ReactNode, useState, useEffect } from "react";
+import { ReactNode, useEffect } from "react";
 import Keyboard from "./components/keyboard/Keyboard";
 // import {
 //   Box,
@@ -13,7 +13,7 @@ import { useKeyboardStore } from "./store/store";
 function App({
   children,
   isBlocked = false,
-  predefinedName,
+  predefinedName = "MicrosoftSwiftKeyboard",
   customConfig,
 }: {
   children: ReactNode;
@@ -21,16 +21,10 @@ function App({
   predefinedName?: string;
   customConfig?: JSON;
 }) {
-  const [keyboardName, setKeyboardName] = useState(
-    useKeyboardStore((state) => state.chosedKeyboard)
+  const setBlocked = useKeyboardStore((state) => state.setBlocked);
+  const setChosenKeyboard = useKeyboardStore(
+    (state) => state.setChosenKeyboard
   );
-  console.log(keyboardName)
-  // const allKeyboards = useKeyboardStore((state) => state.allKeyboards);
-  // const [blocked, setBlocked] = useKeyboardStore((state) => [
-    const [setBlocked] = useKeyboardStore((state) => [
-    // state.blocked,
-    state.setBlocked,
-  ]);
 
   if (customConfig) {
     // if(customConfig) // TO DO parse/safeparse with zod
@@ -43,7 +37,7 @@ function App({
   }, [isBlocked]);
 
   useEffect(() => {
-    if (predefinedName) setKeyboardName(predefinedName);
+    if (predefinedName) setChosenKeyboard(predefinedName);
   }, [predefinedName]);
 
   // const handleChangeKeyboardName = (event: SelectChangeEvent) => {
