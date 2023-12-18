@@ -1,14 +1,14 @@
 import { ReactNode, useState, useEffect } from "react";
 import Keyboard from "./components/keyboard/Keyboard";
-import {
-  Box,
-  Button,
-  MenuItem,
-  Select,
-  SelectChangeEvent,
-} from "@mui/material";
+// import {
+//   Box,
+//   Button,
+//   MenuItem,
+//   Select,
+//   SelectChangeEvent,
+// } from "@mui/material";
 import { useKeyboardStore } from "./store/store";
-import { buttonStyle } from "./AppStyle";
+// import { buttonStyle } from "./AppStyle";
 
 function App({
   children,
@@ -24,7 +24,7 @@ function App({
   const [keyboardName, setKeyboardName] = useState(
     useKeyboardStore((state) => state.chosedKeyboard)
   );
-  const allKeyboards = useKeyboardStore((state) => state.allKeyboards);
+  // const allKeyboards = useKeyboardStore((state) => state.allKeyboards);
   const [blocked, setBlocked] = useKeyboardStore((state) => [
     state.blocked,
     state.setBlocked,
@@ -44,64 +44,67 @@ function App({
     if (predefinedName) setKeyboardName(predefinedName);
   }, [predefinedName]);
 
-  const handleChangeKeyboardName = (event: SelectChangeEvent) => {
-    setKeyboardName(event.target.value);
-    useKeyboardStore.getState().setChosenKeyboard(event.target.value);
-  };
+  // const handleChangeKeyboardName = (event: SelectChangeEvent) => {
+  //   setKeyboardName(event.target.value);
+  //   useKeyboardStore.getState().setChosenKeyboard(event.target.value);
+  // };
 
-  const changeBlocked = () => {
-    setBlocked(!useKeyboardStore.getState().blocked);
-  };
+  // const changeBlocked = () => {
+  //   setBlocked(!useKeyboardStore.getState().blocked);
+  // };
 
   return (
-    <Box>
-      <Box
-        id="page"
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          gap: "40px",
-        }}
-      >
-        <Box
-          sx={{
-            position: "absolute",
-            top: 0,
-            width: "100vw",
-            display: "flex",
-            alignItems: "center",
-            justifyItems: "center",
-            justifyContent: "center",
-            gap: "20px",
-            padding: "5px",
-            backgroundColor: "#8e8e8e",
-          }}
-        >
-          <Box>
-            <Select
-              value={keyboardName}
-              onChange={handleChangeKeyboardName}
-              sx={{
-                backgroundColor: "#3b3b3b",
-                color: "white",
-                border: "1px solid #858585",
-                minWidth: "250px",
-              }}
-            >
-              {Object.keys(allKeyboards).map((keyboard) => (
-                <MenuItem value={keyboard}>{keyboard}</MenuItem>
-              ))}
-            </Select>
-          </Box>
-          <Button sx={buttonStyle} onClick={changeBlocked}>
-            {blocked ? "unblock" : "block"}
-          </Button>
-        </Box>
-        {children}
-      </Box>
+    <>
+      {/* // <Box>
+    //   <Box
+    //     id="page"
+    //     sx={{
+    //       display: "flex",
+    //       flexDirection: "column",
+    //       alignItems: "center",
+    //       gap: "40px",
+    //     }}
+    //   >
+    //     <Box
+    //       sx={{
+    //         position: "absolute",
+    //         top: 0,
+    //         width: "100vw",
+    //         display: "flex",
+    //         alignItems: "center",
+    //         justifyItems: "center",
+    //         justifyContent: "center",
+    //         gap: "20px",
+    //         padding: "5px",
+    //         backgroundColor: "#8e8e8e",
+    //       }}
+    //     >
+    //       <Box>
+    //         <Select
+    //           value={keyboardName}
+    //           onChange={handleChangeKeyboardName}
+    //           sx={{
+    //             backgroundColor: "#3b3b3b",
+    //             color: "white",
+    //             border: "1px solid #858585",
+    //             minWidth: "250px",
+    //           }}
+    //         >
+    //           {Object.keys(allKeyboards).map((keyboard) => (
+    //             <MenuItem value={keyboard}>{keyboard}</MenuItem>
+    //           ))}
+    //         </Select>
+    //       </Box>
+    //       <Button sx={buttonStyle} onClick={changeBlocked}>
+    //         {blocked ? "unblock" : "block"}
+    //       </Button>
+    //     </Box>
+    //     {children}
+    //   </Box> */}
+      {children}
       <Keyboard />
-    </Box>
+      {/* </Box> */}
+    </>
   );
 }
 
