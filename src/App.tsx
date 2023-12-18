@@ -24,9 +24,11 @@ function App({
   const [keyboardName, setKeyboardName] = useState(
     useKeyboardStore((state) => state.chosedKeyboard)
   );
+  console.log(keyboardName)
   // const allKeyboards = useKeyboardStore((state) => state.allKeyboards);
-  const [blocked, setBlocked] = useKeyboardStore((state) => [
-    state.blocked,
+  // const [blocked, setBlocked] = useKeyboardStore((state) => [
+    const [setBlocked] = useKeyboardStore((state) => [
+    // state.blocked,
     state.setBlocked,
   ]);
 
