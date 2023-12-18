@@ -10,78 +10,148 @@ export const useKeyboardStore = create<KeyboardStore>()(
     blocked: true,
     chosedKeyboard: "MicrosoftSwiftKeyboard",
     allKeyboards: {
-      one: {
+      OldMachine: {
         layout: {
           default: [
-            "1 2 3 4 5 6 7 8 9 0",
             "q w e r t y u i o p",
-            "a s d f g h j k l ;",
-            "{shift} z x c v b n m , .",
-            "{lay1} {space} {lay2}",
+            "a s d f g h j k l @",
+            "{shift} z x c v b n m / {backspace}",
+            "{lay1} . , {space} - _ {enter}",
           ],
-        }, // make a function that on layout save/change saves also all keys to buttonTheme to all group
+          special1: [
+            "1 2 3 4 5 6 7 8 9 0",
+            "@ # £ & _ - ( ) = %",
+            `{lay2} " * ' : / ! ? + {small-backspace}`,
+            "{lay1abc} . {long-space} , {enter}",
+          ],
+          special2: [
+            "$ € ¥ ¢ © ® ™ ~ ¿ ×",
+            "{tab} [ ] { } < > ^ ¡ §",
+            "{lay2-long} ` ; ÷ {\\} | ¦ ¬ ¶ {small-backspace-long}",
+            "{lay1abc-long} . {long-space} ° {small-enter-long}",
+          ],
+          shift: [
+            "Q W E R T Y U I O P",
+            "A S D F G H J K L @",
+            "{shift} Z X C V B N M / {backspace}",
+            "{lay1} . , {space} - _ {enter}",
+          ],
+        },
         buttonTheme: [
           {
-            class: "background-shadow-black",
-            buttons: "1 2 3 4 5 6 7 8 9 0 {lay1} {lay2} {shift}",
+            class: "old-machine",
+            buttons:
+              "q w e r t y u i o p a s d f g h j k l ; {shift} z x c v b n m , . {lay1} {lay1abc} {lay1abc-long} {space} {small-space} {long-space} {lay2} {enter} {backspace} {lay2-long} {lay1abc} {small-backspace} {small-enter} {small-backspace-long} {small-enter-long} {tab} 1 2 3 4 5 6 7 8 9 0 @ # & _ - ( ) = % ' * : / ! £ ? + $ € ¥ ¢ © ® ™ ~ ¿ [ ] { } < > ^ ¡ ` ; ÷ {\\} | ¦ ¬ × § ¶ ° Q W E R T Y U I O P A S D F G H J K L Z X C V B N M",
           },
           {
-            class: "unit-6",
+            class: "old-machine",
+            buttons: `"`,
+          },
+          {
+            class: "unit-4",
             buttons: "{space}",
           },
           {
-            class: "unit-2",
-            buttons: "{lay1} {lay2}",
+            class: "unit-6",
+            buttons: "{long-space}",
           },
           {
-            class: "rounded-button",
-            buttons:
-              "1 2 3 4 5 6 7 8 9 0 q w e r t y u i o p a s d f g h j k l ; {shift} z x c v b n m , . {lay1} {space} {lay2}",
+            class: "unit-3",
+            buttons: "{small-space}",
           },
         ],
         display: {
           "{shift}": "⇧",
-          "{lay1}": "&123",
-          "{lay2}": "˅",
+          "{lay1}": "123",
+          "{lay1abc}": "abc",
+          "{lay2}": "{&=",
           "{empty-half}": " ",
           "{backspace}": "⌫",
           "{enter}": "⏎",
           "{\\}": "\\",
+          "{small-backspace}": "⌫",
+          "{small-backspace-long}": "⌫",
+          "{small-space}": " ",
+          "{long-space}": " ",
+          "{small-enter}": "⏎",
+          "{tab}": "⇥",
+          "{small-enter-long}": "⏎",
+          "{lay2-long}": "123",
+          "{lay1abc-long}": "abc",
         },
       },
-      three: {
+      BorderVineGreen: {
         layout: {
           default: [
-            "1 2 3 4 5",
-            "q w e r t y",
-            "a s d f g h",
-            "{shift} z x c .",
-            "{lay1} {space} {lay2}",
+            "q w e r t y u i o p",
+            "a s d f g h j k l @",
+            "{shift} z x c v b n m / {backspace}",
+            "{lay1} . , {space} - _ {enter}",
+          ],
+          special1: [
+            "1 2 3 4 5 6 7 8 9 0",
+            "@ # £ & _ - ( ) = %",
+            `{lay2} " * ' : / ! ? + {small-backspace}`,
+            "{lay1abc} . {long-space} , {enter}",
+          ],
+          special2: [
+            "$ € ¥ ¢ © ® ™ ~ ¿ ×",
+            "{tab} [ ] { } < > ^ ¡ §",
+            "{lay2-long} ` ; ÷ {\\} | ¦ ¬ ¶ {small-backspace-long}",
+            "{lay1abc-long} . {long-space} ° {small-enter-long}",
+          ],
+          shift: [
+            "Q W E R T Y U I O P",
+            "A S D F G H J K L @",
+            "{shift} Z X C V B N M / {backspace}",
+            "{lay1} . , {space} - _ {enter}",
           ],
         },
         buttonTheme: [
-          {
-            class: "unit-6",
-            buttons: "{space}",
-          },
-          {
-            class: "unit-2",
-            buttons: "{lay1} {lay2} 1 2 3 4 5 6 7 8 9 0",
-          },
           {
             class: "border-vine-green",
             buttons:
-              "1 2 3 4 5 q w e r t y a s d f g h {shift} z x c . {lay1} {space} {lay2}",
+              "q w e r t y u i o p a s d f g h j k l ; {shift} z x c v b n m , . {lay1} {lay1abc} {lay1abc-long} {space} {small-space} {long-space} {lay2} {enter} {backspace} {lay2-long} {lay1abc} {small-backspace} {small-enter} {small-backspace-long} {small-enter-long} {tab} 1 2 3 4 5 6 7 8 9 0 @ # & _ - ( ) = % ' * : / ! £ ? + $ € ¥ ¢ © ® ™ ~ ¿ [ ] { } < > ^ ¡ ` ; ÷ {\\} | ¦ ¬ × § ¶ ° Q W E R T Y U I O P A S D F G H J K L Z X C V B N M",
+          },
+          {
+            class: "border-vine-green",
+            buttons: `"`,
+          },
+          {
+            class: "unit-4",
+            buttons: "{space}",
+          },
+          {
+            class: "unit-6",
+            buttons: "{long-space}",
+          },
+          {
+            class: "unit-3",
+            buttons: "{small-space}",
+          },
+          {
+            class: "small",
+            buttons: "{lay2}",
           },
         ],
         display: {
           "{shift}": "⇧",
-          "{lay1}": "&123",
-          "{lay2}": "˅",
+          "{lay1}": "123",
+          "{lay1abc}": "abc",
+          "{lay2}": "{&=",
           "{empty-half}": " ",
           "{backspace}": "⌫",
           "{enter}": "⏎",
           "{\\}": "\\",
+          "{small-backspace}": "⌫",
+          "{small-backspace-long}": "⌫",
+          "{small-space}": " ",
+          "{long-space}": " ",
+          "{small-enter}": "⏎",
+          "{tab}": "⇥",
+          "{small-enter-long}": "⏎",
+          "{lay2-long}": "123",
+          "{lay1abc-long}": "abc",
         },
       },
       MicrosoftSwiftKeyboard: {

@@ -3,17 +3,17 @@ import Keyboard from "./components/keyboard/Keyboard";
 import {
   Box,
   Button,
-  InputLabel,
   MenuItem,
   Select,
   SelectChangeEvent,
 } from "@mui/material";
 import { useKeyboardStore } from "./store/store";
+import { buttonStyle } from "./AppStyle";
 
 function App({
   children,
   isBlocked,
-  predefinedName = "MicrosoftSwiftKeyboard",
+  predefinedName,
   customConfig,
 }: {
   children: ReactNode;
@@ -25,7 +25,10 @@ function App({
     useKeyboardStore((state) => state.chosedKeyboard)
   );
   const allKeyboards = useKeyboardStore((state) => state.allKeyboards);
-  const [setBlocked] = useKeyboardStore((state) => [state.setBlocked]);
+  const [blocked, setBlocked] = useKeyboardStore((state) => [
+    state.blocked,
+    state.setBlocked,
+  ]);
 
   if (customConfig) {
     // if(customConfig) // TO DO parse/safeparse with zod
@@ -38,7 +41,7 @@ function App({
   }, [isBlocked]);
 
   useEffect(() => {
-    setKeyboardName(predefinedName);
+    if (predefinedName) setKeyboardName(predefinedName);
   }, [predefinedName]);
 
   const handleChangeKeyboardName = (event: SelectChangeEvent) => {
@@ -47,12 +50,13 @@ function App({
   };
 
   const changeBlocked = () => {
-    setBlocked(!useKeyboardStore.getState().blocked)
-  }
+    setBlocked(!useKeyboardStore.getState().blocked);
+  };
 
   return (
     <Box>
       <Box
+        id="page"
         sx={{
           display: "flex",
           flexDirection: "column",
@@ -75,12 +79,8 @@ function App({
           }}
         >
           <Box>
-            <InputLabel id="demo-simple-select-label" sx={{ color: "white" }}>
-              Keyboard
-            </InputLabel>
             <Select
               value={keyboardName}
-              label="Keyboard"
               onChange={handleChangeKeyboardName}
               sx={{
                 backgroundColor: "#3b3b3b",
@@ -94,8 +94,8 @@ function App({
               ))}
             </Select>
           </Box>
-          <Button sx={{ backgroundColor: "white", padding: "10px" }} onClick={changeBlocked}>
-            Block
+          <Button sx={buttonStyle} onClick={changeBlocked}>
+            {blocked ? "unblock" : "block"}
           </Button>
         </Box>
         {children}

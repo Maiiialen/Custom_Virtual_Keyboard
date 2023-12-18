@@ -9,7 +9,7 @@ export default defineConfig({
   plugins: [react(), dts({ insertTypesEntry: true }), libInjectCss()],
   build: {
     lib: {
-      name: "custom-virtual-keyboard",
+      name: "@maiiialen/custom-virtual-keyboard",
       fileName: "custom-virtual-keyboard",
       entry: resolve("src/App.tsx")
     }
