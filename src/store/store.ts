@@ -8,7 +8,7 @@ export const useKeyboardStore = create<KeyboardStore>()(
     target: null,
     type: "",
     blocked: true,
-    chosedKeyboard: "OldMachine",
+    chosedKeyboard: "MicrosoftSwiftKeyboard",
     allKeyboards: {
       OldMachine: {
         layout: {
