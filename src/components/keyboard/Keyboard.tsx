@@ -32,7 +32,9 @@ function CustomKeyboard() {
   }, [chosedKeyboard]);
 
   const handleOpenKeyboard = (event: Event) => {
-    if ((event.target as HTMLElement).tagName === "INPUT")
+    console.log((event.target as HTMLElement).tagName)
+    const tagName = (event.target as HTMLElement).tagName
+    if (tagName === "INPUT" || tagName === "TEXTAREA")
       setNewTarget({
         show: true,
         target: event.target as HTMLInputElement,

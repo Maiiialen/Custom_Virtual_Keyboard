@@ -24,6 +24,10 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
           <div>Number 1</div>
           <input type="number" />
         </div>
+        <div>
+          <div>text area</div>
+          <textarea />
+        </div>
       </div>
       <div
         style={{
