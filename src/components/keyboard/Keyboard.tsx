@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { useKeyboardStore } from "../../store/store";
 import Keyboard, { KeyboardReactInterface } from "react-simple-keyboard";
 import "react-simple-keyboard/build/css/index.css";
-import "./keyboard.css";
+import "./keyboard.scss";
 
 function CustomKeyboard() {
   const [
@@ -76,6 +76,7 @@ function CustomKeyboard() {
   }, [target, show, blocked]);
 
   const onChange = (actualInput: string) => {
+    console.log("onChange", previousValue, actualInput)
     const input = previousValue + actualInput.slice(-1);
     setPreviousValue(input);
 
@@ -117,6 +118,7 @@ function CustomKeyboard() {
   };
 
   const onKeyPress = (button: string, e: MouseEvent | undefined) => {
+    console.log("onKeyPress")
     e?.preventDefault();
     if (button.includes("shift")) handleShift();
     if (button.includes("lay1")) handleLay1();
