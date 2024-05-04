@@ -1,11 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App.tsx";
 import "./index.scss";
+import Example from "./pages/Example";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <App isBlocked={false}>
+    <Example isBlocked={false}>
       <div
         style={{
           width: "100vw",
@@ -48,6 +48,6 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
           <input type="number" />
         </div>
       </div>
-    </App>
+    </Example>
   </React.StrictMode>
 );

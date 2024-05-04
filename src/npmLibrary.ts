@@ -1,3 +1,3 @@
-import CustomVirtualKeyboard from "./App"
+import CustomVirtualKeyboard from "./pages/App"
 
 export { CustomVirtualKeyboard };

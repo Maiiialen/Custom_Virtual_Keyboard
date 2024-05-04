@@ -36,12 +36,18 @@ export const useKeyboardStore = create<KeyboardStore>()(
             "{shift} Z X C V B N M / {backspace}",
             "{lay1} . , {space} - _ {enter}",
           ],
+          numeric: [
+            "1 2 3 {+}",
+            "4 5 6 {-}",
+            "7 8 9 {small-backspace}",
+            "- 0 . {small-enter}",
+          ],
         },
         buttonTheme: [
           {
             class: "old-machine",
             buttons:
-              "q w e r t y u i o p a s d f g h j k l ; {shift} z x c v b n m , . {lay1} {lay1abc} {lay1abc-long} {space} {small-space} {long-space} {lay2} {enter} {backspace} {lay2-long} {lay1abc} {small-backspace} {small-enter} {small-backspace-long} {small-enter-long} {tab} 1 2 3 4 5 6 7 8 9 0 @ # & _ - ( ) = % ' * : / ! £ ? + $ € ¥ ¢ © ® ™ ~ ¿ [ ] { } < > ^ ¡ ` ; ÷ {\\} | ¦ ¬ × § ¶ ° Q W E R T Y U I O P A S D F G H J K L Z X C V B N M",
+              "q w e r t y u i o p a s d f g h j k l ; {shift} z x c v b n m , . {lay1} {lay1abc} {lay1abc-long} {space} {small-space} {long-space} {lay2} {enter} {backspace} {lay2-long} {lay1abc} {small-backspace} {small-enter} {small-backspace-long} {small-enter-long} {tab} 1 2 3 4 5 6 7 8 9 0 @ # & _ - ( ) = % ' * : / ! £ ? + $ € ¥ ¢ © ® ™ ~ ¿ [ ] { } < > ^ ¡ ` ; ÷ {\\} | ¦ ¬ × § ¶ ° Q W E R T Y U I O P A S D F G H J K L Z X C V B N M {+} {-}",
           },
           {
             class: "old-machine",
@@ -78,6 +84,8 @@ export const useKeyboardStore = create<KeyboardStore>()(
           "{small-enter-long}": "⏎",
           "{lay2-long}": "123",
           "{lay1abc-long}": "abc",
+          "{+}": "+",
+          "{-}": "-",
         },
       },
       BorderVineGreen: {
@@ -106,12 +114,18 @@ export const useKeyboardStore = create<KeyboardStore>()(
             "{shift} Z X C V B N M / {backspace}",
             "{lay1} . , {space} - _ {enter}",
           ],
+          numeric: [
+            "1 2 3 {+}",
+            "4 5 6 {-}",
+            "7 8 9 {small-backspace}",
+            "- 0 . {small-enter}",
+          ],
         },
         buttonTheme: [
           {
             class: "border-vine-green",
             buttons:
-              "q w e r t y u i o p a s d f g h j k l ; {shift} z x c v b n m , . {lay1} {lay1abc} {lay1abc-long} {space} {small-space} {long-space} {lay2} {enter} {backspace} {lay2-long} {lay1abc} {small-backspace} {small-enter} {small-backspace-long} {small-enter-long} {tab} 1 2 3 4 5 6 7 8 9 0 @ # & _ - ( ) = % ' * : / ! £ ? + $ € ¥ ¢ © ® ™ ~ ¿ [ ] { } < > ^ ¡ ` ; ÷ {\\} | ¦ ¬ × § ¶ ° Q W E R T Y U I O P A S D F G H J K L Z X C V B N M",
+              "q w e r t y u i o p a s d f g h j k l ; {shift} z x c v b n m , . {lay1} {lay1abc} {lay1abc-long} {space} {small-space} {long-space} {lay2} {enter} {backspace} {lay2-long} {lay1abc} {small-backspace} {small-enter} {small-backspace-long} {small-enter-long} {tab} 1 2 3 4 5 6 7 8 9 0 @ # & _ - ( ) = % ' * : / ! £ ? + $ € ¥ ¢ © ® ™ ~ ¿ [ ] { } < > ^ ¡ ` ; ÷ {\\} | ¦ ¬ × § ¶ ° Q W E R T Y U I O P A S D F G H J K L Z X C V B N M {+} {-}",
           },
           {
             class: "border-vine-green",
@@ -152,6 +166,8 @@ export const useKeyboardStore = create<KeyboardStore>()(
           "{small-enter-long}": "⏎",
           "{lay2-long}": "123",
           "{lay1abc-long}": "abc",
+          "{+}": "+",
+          "{-}": "-",
         },
       },
       MicrosoftSwiftKeyboard: {
@@ -180,12 +196,18 @@ export const useKeyboardStore = create<KeyboardStore>()(
             "{shift} Z X C V B N M {backspace}",
             "{lay1} , {space} . {enter}",
           ],
+          numeric: [
+            "1 2 3 {+}",
+            "4 5 6 {-}",
+            "7 8 9 {small-backspace}",
+            "- 0 . {small-enter}",
+          ],
         },
         buttonTheme: [
           {
             class: "rounded-button",
             buttons:
-              "q w e r t y u i o p a s d f g h j k l ; {shift} z x c v b n m , . {lay1} {lay1abc} {lay1abc-long} {space} {small-space} {lay2} {enter} {backspace} {lay2-long} {lay1abc} {small-backspace} {small-enter} {small-backspace-long} {small-enter-long} {tab} 1 2 3 4 5 6 7 8 9 0 @ # & _ - ( ) = % ' * : / ! £ ? + $ € ¥ ¢ © ® ™ ~ ¿ [ ] { } < > ^ ¡ ` ; ÷ {\\} | ¦ ¬ × § ¶ ° Q W E R T Y U I O P A S D F G H J K L Z X C V B N M",
+              "q w e r t y u i o p a s d f g h j k l ; {shift} z x c v b n m , . {lay1} {lay1abc} {lay1abc-long} {space} {small-space} {lay2} {enter} {backspace} {lay2-long} {lay1abc} {small-backspace} {small-enter} {small-backspace-long} {small-enter-long} {tab} 1 2 3 4 5 6 7 8 9 0 @ # & _ - ( ) = % ' * : / ! £ ? + $ € ¥ ¢ © ® ™ ~ ¿ [ ] { } < > ^ ¡ ` ; ÷ {\\} | ¦ ¬ × § ¶ ° Q W E R T Y U I O P A S D F G H J K L Z X C V B N M {+} {-}",
           },
           {
             class: "rounded-button",
@@ -194,7 +216,7 @@ export const useKeyboardStore = create<KeyboardStore>()(
           {
             class: "background-shadow-black",
             buttons:
-              "{lay1} {lay2} {shift} . , {enter} {backspace} {tab} {small-enter-long} {small-backspace-long} {small-backspace} {lay2-long} {lay1abc} {lay1abc-long}",
+              "{lay1} {lay2} {shift} . , {enter} {backspace} {tab} {small-enter-long} {small-backspace-long} {small-backspace} {lay2-long} {lay1abc} {lay1abc-long} {+} {-}",
           },
           {
             class: "unit-5",
@@ -235,6 +257,8 @@ export const useKeyboardStore = create<KeyboardStore>()(
           "{small-enter-long}": "⏎",
           "{lay2-long}": "123",
           "{lay1abc-long}": "abc",
+          "{+}": "+",
+          "{-}": "-",
         },
       },
     },
@@ -244,7 +268,7 @@ export const useKeyboardStore = create<KeyboardStore>()(
       type,
     }: {
       show: boolean;
-      target: HTMLElement | null;
+      target: HTMLInputElement | HTMLTextAreaElement | null;
       type: string;
     }) => {
       set({
@@ -262,7 +286,8 @@ export const useKeyboardStore = create<KeyboardStore>()(
     setChosenKeyboard: (newChosenKeyboard: string) => {
       set({ chosedKeyboard: newChosenKeyboard });
     },
-    addNewConfig: (newConfig: KeyboardType) => {  // TO DO add produce?
+    addNewConfig: (newConfig: KeyboardType) => {
+      // TO DO add produce?
       set({ allKeyboards: { ...get().allKeyboards, ...newConfig } });
     },
   }))

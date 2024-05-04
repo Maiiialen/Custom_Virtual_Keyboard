@@ -1,13 +1,16 @@
 import { useEffect, useRef, useState } from "react";
-import { useKeyboardStore } from "../../store/store";
+import { useKeyboardStore } from "../store/store";
 import Keyboard, { KeyboardReactInterface } from "react-simple-keyboard";
 import "react-simple-keyboard/build/css/index.css";
 import "./keyboard.scss";
+
+const numericRegex = new RegExp(/[+-]?([0-9]+([.][0-9]*)?)?/);
 
 function CustomKeyboard() {
   const [
     show,
     target,
+    type,
     blocked,
     setNewTarget,
     setShow,
@@ -16,6 +19,7 @@ function CustomKeyboard() {
   ] = useKeyboardStore((state) => [
     state.show,
     state.target,
+    state.type,
     state.blocked,
     state.setNewTarget,
     state.setShow,
@@ -24,27 +28,63 @@ function CustomKeyboard() {
   ]);
   const [keyboard, setKeyboard] = useState(allKeyboards[chosedKeyboard]);
   const [layoutName, setLayoutName] = useState("default");
-  const [previousValue, setPreviousValue] = useState("");
   const keyboardElement = useRef<KeyboardReactInterface | null>(null);
 
   useEffect(() => {
     setKeyboard(allKeyboards[chosedKeyboard]);
   }, [chosedKeyboard]);
 
+  const setValueAndCursor = (input: string, selectionPosition: number) => {
+    const setValue = Object.getOwnPropertyDescriptor(
+      type === "textarea"
+        ? window.HTMLTextAreaElement.prototype
+        : window.HTMLInputElement.prototype,
+      "value"
+    )?.set;
+    setValue?.call(target, input);
+
+    const setSelectionStart = Object.getOwnPropertyDescriptor(
+      type === "textarea"
+        ? window.HTMLTextAreaElement.prototype
+        : window.HTMLInputElement.prototype,
+      "selectionStart"
+    )?.set;
+    setSelectionStart?.call(target, selectionPosition);
+
+    const setSelectionEnd = Object.getOwnPropertyDescriptor(
+      type === "textarea"
+        ? window.HTMLTextAreaElement.prototype
+        : window.HTMLInputElement.prototype,
+      "selectionEnd"
+    )?.set;
+    setSelectionEnd?.call(target, selectionPosition);
+  };
+
   const handleOpenKeyboard = (event: Event) => {
-    const tagName = (event.target as HTMLElement).tagName
+    const tagName = (event.target as HTMLElement).tagName;
+    const type = (event.target as HTMLInputElement).type;
     if (tagName === "INPUT" || tagName === "TEXTAREA")
       setNewTarget({
         show: true,
         target: event.target as HTMLInputElement,
-        type: (event.target as HTMLInputElement).type,
+        type: type,
       });
-    setPreviousValue((event.target as HTMLInputElement).value);
-    setLayoutName("default");
+    type === "number" ? setLayoutName("numeric") : setLayoutName("default");
+
+    if (type === "number") {
+      (event.target as HTMLInputElement).type = "text";
+      (event.target as HTMLInputElement).selectionStart = (event.target as HTMLInputElement).value.length;
+      event.target?.addEventListener("blur", changeType, false);
+    }
   };
 
   const handleCloseKeyboard = () => {
     setNewTarget({ show: false, target: null, type: "" });
+    window.removeEventListener("blur", changeType);
+  };
+
+  const changeType = (event: Event) => {
+    (event.target as HTMLInputElement).type = "number";
   };
 
   useEffect(() => {
@@ -75,16 +115,24 @@ function CustomKeyboard() {
     };
   }, [target, show, blocked]);
 
-  const onChange = (actualInput: string) => {
-    console.log("onChange", previousValue, actualInput)
-    const input = previousValue + actualInput.slice(-1);
-    setPreviousValue(input);
+  const onChange = (_actualInput: string, event: MouseEvent | undefined) => {
+    const previousValue = (target as HTMLInputElement).value;
+    const selectionStart = Number((target as HTMLInputElement)?.selectionStart);
+    if (
+      !(event?.target as HTMLButtonElement)?.dataset?.skbtn?.includes(
+        "backspace"
+      )
+    ) {
+      const preInput =
+        previousValue.slice(0, selectionStart) +
+        (event?.target as HTMLButtonElement)?.dataset?.skbtn +
+        previousValue.slice(selectionStart, previousValue.length);
+      const input =
+        (type === "number" ? preInput.match(numericRegex)?.[0] : preInput) ??
+        "";
 
-    const setter = Object.getOwnPropertyDescriptor(
-      window.HTMLInputElement.prototype,
-      "value"
-    )?.set;
-    setter?.call(target, input);
+      setValueAndCursor(input, selectionStart + 1);
+    }
   };
 
   const handleShift = () => {
@@ -107,18 +155,16 @@ function CustomKeyboard() {
   };
 
   const handleBackspace = () => {
-    const input = previousValue.slice(0, -1);
-    setPreviousValue(input);
+    const selectionStart = Number((target as HTMLInputElement)?.selectionStart);
+    const previousValue = (target as HTMLInputElement).value;
+    const input =
+      previousValue.slice(0, selectionStart - 1) +
+      previousValue.slice(selectionStart, previousValue.length);
 
-    const setter = Object.getOwnPropertyDescriptor(
-      window.HTMLInputElement.prototype,
-      "value"
-    )?.set;
-    setter?.call(target, input);
+    setValueAndCursor(input, selectionStart - 1);
   };
 
   const onKeyPress = (button: string, e: MouseEvent | undefined) => {
-    console.log("onKeyPress")
     e?.preventDefault();
     if (button.includes("shift")) handleShift();
     if (button.includes("lay1")) handleLay1();
@@ -127,7 +173,7 @@ function CustomKeyboard() {
   };
 
   const onKeyReleased = (button: string) => {
-    if (button === "{enter}") {
+    if (button.includes("enter")) {
       target?.blur();
       setTimeout(() => setShow(false), 50);
     }

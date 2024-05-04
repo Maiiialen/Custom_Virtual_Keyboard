@@ -1,6 +1,6 @@
 export type KeyboardStore = {
   show: boolean;
-  target: HTMLElement | null;
+  target: HTMLInputElement | HTMLTextAreaElement | null;
   type: string;
   blocked: boolean;
   chosedKeyboard: string;
@@ -11,7 +11,7 @@ export type KeyboardStore = {
     type,
   }: {
     show: boolean;
-    target: HTMLElement | null;
+    target: HTMLInputElement | HTMLTextAreaElement | null;
     type: string;
   }) => void;
   setBlocked: (isBlocked: boolean) => void;
