@@ -8,7 +8,6 @@ import {
 } from "@mui/material";
 import { useKeyboardStore } from "../store/store";
 import App from "./App.tsx";
-import { buttonStyle } from "./ExampleStyle";
 
 function Example({
   children,
@@ -88,11 +87,25 @@ function Example({
               }}
             >
               {Object.keys(allKeyboards).map((keyboard) => (
-                <MenuItem key={keyboard} value={keyboard}>{keyboard}</MenuItem>
+                <MenuItem key={keyboard} value={keyboard}>
+                  {keyboard}
+                </MenuItem>
               ))}
             </Select>
           </Box>
-          <Button sx={buttonStyle} onClick={changeBlocked}>
+          <Button
+            sx={{
+              color: "white",
+              backgroundColor: "#3b3b3b",
+              width: "100px",
+              padding: "10px",
+              ":hover": {
+                color: "black",
+                backgroundColor: "white",
+              },
+            }}
+            onClick={changeBlocked}
+          >
             {blocked ? "unblock" : "block"}
           </Button>
         </Box>
