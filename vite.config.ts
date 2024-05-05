@@ -11,7 +11,7 @@ export default defineConfig({
     lib: {
       name: "@maiiialen/custom-virtual-keyboard",
       fileName: "custom-virtual-keyboard",
-      entry: resolve("src/App.tsx"),
+      entry: resolve("src/npmLibrary.tsx"),
     },
     rollupOptions: {
       external: [
