@@ -1,6 +1,6 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
-import dts from "vite-plugin-dts";
+// import dts from "vite-plugin-dts";
 // import { libInjectCss } from "vite-plugin-lib-inject-css";
 // import { resolve } from "path";
 
@@ -8,6 +8,7 @@ import dts from "vite-plugin-dts";
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: "https://maiiialen.github.io/Custom_Virtual_Keyboard/",
   plugins: [react()
     // , dts({ insertTypesEntry: true }), libInjectCss()
   ],
