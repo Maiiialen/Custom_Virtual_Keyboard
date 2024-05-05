@@ -8,6 +8,7 @@ import { resolve } from "path";
 export default defineConfig({
   plugins: [react(), dts({ insertTypesEntry: true }), libInjectCss()],
   build: {
+    outDir: 'docs',
     lib: {
       name: "@maiiialen/custom-virtual-keyboard",
       fileName: "custom-virtual-keyboard",
