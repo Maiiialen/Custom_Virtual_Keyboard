@@ -8,6 +8,14 @@
     "type": "git",
     "url": "https://github.com/Maiiialen/Custom_Virtual_Keyboard"
   },
+  "main": "./dist/custom-virtual-keyboard.js",
+  "module": "./dist/custom-virtual-keyboard.js",
+  "types": "./dist/custom-virtual-keyboard.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/custom-virtual-keyboard.js"
+    }
+  },
   "scripts": {
     "dev": "vite",
     "build": "npm run tsc && vite build",
