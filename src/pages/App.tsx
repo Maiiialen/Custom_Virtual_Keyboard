@@ -1,17 +1,15 @@
 import { ReactNode, useEffect } from "react";
 import { useKeyboardStore } from "../store/store";
-import Keyboard from "../keyboard/Keyboard";
+import Keyboard from "../keyboard/CustomKeyboard";
 
 function App({
   children,
   isBlocked = false,
-  predefinedName = "MicrosoftSwiftKeyboard",
-  customConfig,
+  name = "MicrosoftSwiftKeyboard",
 }: {
   children: ReactNode;
   isBlocked?: boolean;
-  predefinedName?: string;
-  customConfig?: JSON;
+  name?: string;
 }) {
   const setBlocked = useKeyboardStore((state) => state.setBlocked);
   const setChosenKeyboard = useKeyboardStore(
@@ -23,12 +21,13 @@ function App({
   }, [isBlocked]);
 
   useEffect(() => {
-    if (predefinedName) setChosenKeyboard(predefinedName);
-  }, [predefinedName]);
+    if (name) setChosenKeyboard(name);
+    console.log("name", name)
+  }, [name]);
 
   return (
     <>
-      <div id="page">{children}</div>
+      <div id="CustomVirtualKeyboardByMaialen">{children}</div>
       <Keyboard />
     </>
   );

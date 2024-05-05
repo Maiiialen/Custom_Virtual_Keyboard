@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { useKeyboardStore } from "../store/store";
 import Keyboard, { KeyboardReactInterface } from "react-simple-keyboard";
 import "react-simple-keyboard/build/css/index.css";
-import "./keyboard.scss";
+import "./custom-keyboard.scss";
 
 const numericRegex = new RegExp(/[+-]?([0-9]+([.][0-9]*)?)?/);
 
@@ -73,7 +73,9 @@ function CustomKeyboard() {
 
     if (type === "number") {
       (event.target as HTMLInputElement).type = "text";
-      (event.target as HTMLInputElement).selectionStart = (event.target as HTMLInputElement).value.length;
+      (event.target as HTMLInputElement).selectionStart = (
+        event.target as HTMLInputElement
+      ).value.length;
       event.target?.addEventListener("blur", changeType, false);
     }
   };
@@ -98,7 +100,7 @@ function CustomKeyboard() {
   }, []);
 
   useEffect(() => {
-    const page = document.getElementById("page");
+    const page = document.getElementById("CustomVirtualKeyboardByMaialen");
     const keyboardOverlay = document.getElementById("keyboard");
     if (target) {
       const difference =

@@ -12,13 +12,11 @@ import App from "./App.tsx";
 function Example({
   children,
   isBlocked = false,
-  predefinedName = "MicrosoftSwiftKeyboard",
-  customConfig,
+  name = "MicrosoftSwiftKeyboard",
 }: {
   children: ReactNode;
   isBlocked?: boolean;
-  predefinedName?: string;
-  customConfig?: JSON;
+  name?: string;
 }) {
   const [chosedKeyboard, blocked, setBlocked, setChosenKeyboard, allKeyboards] =
     useKeyboardStore((state) => [
@@ -29,19 +27,13 @@ function Example({
       state.allKeyboards,
     ]);
 
-  if (customConfig) {
-    //  if(customConfig)  TO DO parse/safeparse with zod
-    //  useKeyboardStore.getState().addNewConfig(customConfig);
-    //  setKeyboardName(customConfig);
-  }
-
   useEffect(() => {
     setBlocked(isBlocked);
   }, [isBlocked]);
 
   useEffect(() => {
-    if (predefinedName) setChosenKeyboard(predefinedName);
-  }, [predefinedName]);
+    if (name) setChosenKeyboard(name);
+  }, [name]);
 
   const handleChangeKeyboardName = (event: SelectChangeEvent) => {
     setChosenKeyboard(event.target.value);
@@ -109,7 +101,7 @@ function Example({
             {blocked ? "unblock" : "block"}
           </Button>
         </Box>
-        <App isBlocked={false}>{children}</App>
+        <App isBlocked={false} name={name}>{children}</App>
       </Box>
     </>
   );

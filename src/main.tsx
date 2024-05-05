@@ -5,7 +5,7 @@ import Example from "./pages/Example";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
-    <Example isBlocked={false}>
+    <Example isBlocked={false} name={"MicrosoftSwiftKeyboard"}>
       <div
         style={{
           width: "100vw",
