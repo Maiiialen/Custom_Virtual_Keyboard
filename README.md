@@ -2,7 +2,7 @@
 ![](readme_files/demo.gif)
 
 ### Instalation
-The keyboard, available as an npm library, can be easily integrated into other projects with a simple installation command: `npm install @maiiialen/custom-virtual-keyboard@1.0.0`.
+The keyboard, available as an npm library, can be easily integrated into other projects with a simple installation command: `npm install @maiiialen/custom-virtual-keyboard@latest`.
 Note that you'll need access to the private package to install it.
 
 ### Capabilities
