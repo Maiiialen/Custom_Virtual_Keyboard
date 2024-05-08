@@ -13,7 +13,7 @@ export default defineConfig({
     // , dts({ insertTypesEntry: true }), libInjectCss()
   ],
   build: {
-    outDir: 'docs',
+    outDir: 'dist',
     // lib: {
     //   name: "@maiiialen/custom-virtual-keyboard",
     //   fileName: "custom-virtual-keyboard",
