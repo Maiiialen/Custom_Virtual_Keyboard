@@ -63,7 +63,7 @@ function CustomKeyboard() {
   const handleOpenKeyboard = (event: Event) => {
     const tagName = (event.target as HTMLElement).tagName;
     const type = (event.target as HTMLInputElement).type;
-    if (tagName === "INPUT" || tagName === "TEXTAREA")
+    if ((tagName === "INPUT" || tagName === "TEXTAREA") && type !== "checkbox")
       setNewTarget({
         show: true,
         target: event.target as HTMLInputElement,
@@ -125,15 +125,27 @@ function CustomKeyboard() {
         "backspace"
       )
     ) {
-      const preInput =
-        previousValue.slice(0, selectionStart) +
-        (event?.target as HTMLButtonElement)?.dataset?.skbtn +
-        previousValue.slice(selectionStart, previousValue.length);
-      const input =
-        (type === "number" ? preInput.match(numericRegex)?.[0] : preInput) ??
-        "";
-
-      setValueAndCursor(input, selectionStart + 1);
+      if (
+        (event?.target as HTMLButtonElement)?.dataset?.skbtn?.includes("space")
+      ) {
+        const preInput =
+          previousValue.slice(0, selectionStart) +
+          " " +
+          previousValue.slice(selectionStart, previousValue.length);
+        const input =
+          (type === "number" ? preInput.match(numericRegex)?.[0] : preInput) ??
+          "";
+        setValueAndCursor(input, selectionStart + 1);
+      } else {
+        const preInput =
+          previousValue.slice(0, selectionStart) +
+          (event?.target as HTMLButtonElement)?.dataset?.skbtn +
+          previousValue.slice(selectionStart, previousValue.length);
+        const input =
+          (type === "number" ? preInput.match(numericRegex)?.[0] : preInput) ??
+          "";
+        setValueAndCursor(input, selectionStart + 1);
+      }
     }
   };
 
@@ -166,12 +178,34 @@ function CustomKeyboard() {
     setValueAndCursor(input, selectionStart - 1);
   };
 
+  const handleIncrease = () => {
+    let selectionStart = Number((target as HTMLInputElement)?.selectionStart);
+    const previousValue = (target as HTMLInputElement).value;
+    const input = (Number(previousValue) + 1).toString();
+    if (input.length > previousValue.length)
+      selectionStart = selectionStart + 1;
+
+    setValueAndCursor(input, selectionStart);
+  };
+
+  const handleDecrease = () => {
+    let selectionStart = Number((target as HTMLInputElement)?.selectionStart);
+    const previousValue = (target as HTMLInputElement).value;
+    const input = (Number(previousValue) - 1).toString();
+    if (input.length < previousValue.length)
+      selectionStart = selectionStart - 1;
+
+    setValueAndCursor(input, selectionStart);
+  };
+
   const onKeyPress = (button: string, e: MouseEvent | undefined) => {
     e?.preventDefault();
     if (button.includes("shift")) handleShift();
     if (button.includes("lay1")) handleLay1();
     if (button.includes("lay2")) handleLay2();
     if (button.includes("backspace")) handleBackspace();
+    if (button.includes("{+}")) handleIncrease();
+    if (button.includes("{-}")) handleDecrease();
   };
 
   const onKeyReleased = (button: string) => {

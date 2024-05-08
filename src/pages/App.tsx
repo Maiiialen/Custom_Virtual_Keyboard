@@ -22,7 +22,6 @@ function App({
 
   useEffect(() => {
     if (name) setChosenKeyboard(name);
-    console.log("name", name)
   }, [name]);
 
   return (

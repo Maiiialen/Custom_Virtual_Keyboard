@@ -17,16 +17,20 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
         }}
       >
         <div>
-          <div>Text 1</div>
+          <div>text 1</div>
           <input type="text" />
         </div>
         <div>
-          <div>Number 1</div>
+          <div>number 1</div>
           <input type="number" />
         </div>
         <div>
           <div>text area</div>
           <textarea />
+        </div>
+        <div style={{display:"flex", flexDirection:"column"}}>
+          <div>check box</div>
+          <input type="checkbox" />
         </div>
       </div>
       <div
@@ -40,11 +44,11 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
         }}
       >
         <div>
-          <div>Text 2</div>
+          <div>text 2</div>
           <input type="text" />
         </div>
         <div>
-          <div>Number 2</div>
+          <div>number 2</div>
           <input type="number" />
         </div>
       </div>
