@@ -4,7 +4,7 @@
 ## Demo
 [maiiialen.github.io/Custom_Virtual_Keyboard](https://maiiialen.github.io/Custom_Virtual_Keyboard/)
 
-### Instalation
+### Installation
 The keyboard, available as an npm library, can be easily integrated into other projects with a simple installation command: `npm install @maiiialen/custom-virtual-keyboard@latest`.
 Note that you'll need access to the private package to install it.
 
