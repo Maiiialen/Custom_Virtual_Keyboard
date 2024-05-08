@@ -1,6 +1,9 @@
 # Custom Virtual Keyboard
 ![](readme_files/demo.gif)
 
+## Demo
+[maiiialen.github.io/Custom_Virtual_Keyboard](https://maiiialen.github.io/Custom_Virtual_Keyboard/)
+
 ### Instalation
 The keyboard, available as an npm library, can be easily integrated into other projects with a simple installation command: `npm install @maiiialen/custom-virtual-keyboard@latest`.
 Note that you'll need access to the private package to install it.
@@ -12,6 +15,8 @@ With this virtual keyboard, you can:
 - **Edit within an input field**: Insert or delete characters at any position within the text, not just at the end.
 - **Type in input fields located at the bottom of the page**: The virtual keyboard smartly adjusts page to ensure the input field remains visible, even if the keyboard would typically cover it.
 - **Adjust numerical inputs**: Quickly increase or decrease values in numerical fields with built-in controls.
+- **Selective Keyboard Display**: The virtual keyboard appears only in specific input fields, preventing unintended pop-ups in places like checkboxes.
+- **Keyboard Blocking**: You can disable the virtual keyboard with a single variable, allowing users to switch entirely to a physical keyboard when needed. This flexibility lets users choose the best typing method for their current context.
 
 ### Theme Options for Virtual Keyboard
 The keyboard comes with three different themes, allowing users to choose a style that suits their preferences or application design.
