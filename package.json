@@ -1,7 +1,7 @@
 {
   "name": "@maiiialen/custom-virtual-keyboard",
   "homepage": "https://maiiialen.github.io/Custom_Virtual_Keyboard/",
-  "private": true,
+  "private": false,
   "version": "1.0.1",
   "type": "module",
   "repository": {
